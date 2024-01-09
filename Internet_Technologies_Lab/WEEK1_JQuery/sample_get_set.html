@@ -1,0 +1,26 @@
+<html>
+
+<head>
+    <title>Get_Set sample</title>
+    <script type="text/javascript" src="jquery-3.4.1.js">
+    </script>
+    <script type="text/javascript" language="javascript">
+        $(document).ready(function () {
+            var title = $("p").attr("title");
+            // takes the title of first "p" and if not title in first p even even other p's have a title then does not print anything
+            $("#divid").text(title);
+            $("#myimg").attr("src", "assets/img1.jpg");
+        });
+    </script>
+</head>
+
+<body>
+    <div>
+        <p title="Bold and Brave">This is first paragraph.</p>
+        <p title="Second" id="myid">This is second paragraph.</p>
+        <div id="divid"></div>
+        <img id="myimg" alt="Sample image" />
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,25 @@
+<html>
+
+<head>
+    <title>Hover sample</title>
+    <script type="text/javascript" src="jquery-3.4.1.js">
+    </script>
+    <script type="text/javascript" language="javascript">
+        $(document).ready(function () {
+            $('div').hover(
+                function () {
+                    $(this).css({ "background-color": "red" });
+                },
+                function () {
+                    $(this).css({ "background-color": "blue" });
+                }
+            );
+        }); 
+    </script>
+</head>
+
+<body>
+    <div id="mydiv">
+        Hover on this to change colour
+    </div>
+</body>

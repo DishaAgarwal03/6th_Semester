@@ -1,0 +1,26 @@
+<html>
+
+<head>
+    <title>OnClick sample</title>
+    <script type="text/javascript" src="jquery-3.4.1.js">
+    </script>
+    <script type="text/javascript" language="javascript">
+        $(document).ready(function () {
+            $("button").click(function () {
+                $("div").animate({ left: '250px' });
+            });
+
+        });
+    </script>
+</head>
+
+<body>
+    <button>Start animation</button>
+    <p>By default, all HTML elements have a static position, and cannot be moved. To manipulate the position, remember to
+        first set the CSS position property of the element to relative, fixed, or absolute!</p>
+    <div id="mydiv" style="position:absolute">
+        Click on the button.
+    </div>
+</body>
+
+</html>

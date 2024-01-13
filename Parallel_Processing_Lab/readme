@@ -1,1 +1,7 @@
 PCAP
+
+Week2:
+https://www.open-mpi.org/doc/v3.0/man3/MPI_Bsend.3.php#toc2
+http://www.cs.emory.edu/~cheung/Courses/355/Syllabus/92-MPI/send+recv.html
+https://mpitutorial.com/tutorials/mpi-send-and-receive/
+http://condor.cc.ku.edu/~grobe/docs/intro-MPI-C.shtml

@@ -1,0 +1,60 @@
+<!--  Create a web form with employee ids in dropdown list. Use a textbox for accepting
+date of joining. Add a button named “Am I Eligible for Promotion”. On clicking
+the button, if he has more than 5 years of experience, then display “YES” else
+“NO” in the label control -->
+
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Employee</title>
+
+</head>
+<body>
+
+	<script type="text/javascript">
+		function myfunc() {
+
+			var currentDate = new Date();
+			var dateString = document.getElementById("doj").value;
+			var givenDate = new Date(dateString);
+
+			// Calculate the number of elapsed years
+			var elapsedYears = currentDate.getFullYear() - givenDate.getFullYear();
+
+			// Display the result
+			if (isNaN(givenDate)) {
+				document.getElementById("eligible").innerText = "Invalid date!";
+			} else {
+				if (elapsedYears > 5) {
+					var s = "YES";
+				}
+				else {
+					var s = "NO";
+				}
+				document.getElementById("eligible").textContent = s;
+			}
+			
+		}
+	</script>
+
+	Employee id: <select id="myDropdown"></select> <!--This line has to be before the script part-->
+	<script>
+		var dropdown = document.getElementById("myDropdown");
+		var startValue = 100;
+		var endValue = 200;
+
+		for (var i = startValue; i <= endValue; i++) {
+			var option = document.createElement("option");
+			option.text = i;
+			dropdown.add(option);
+		}
+	</script><br><br>
+
+	Date of Joining: <input type="text" id="doj"><br><br>
+
+	<button onclick="myfunc()">Am I Eligible for Promotion?</button><br><br>
+	<label id="eligible"></label>
+</body>
+</html>
+

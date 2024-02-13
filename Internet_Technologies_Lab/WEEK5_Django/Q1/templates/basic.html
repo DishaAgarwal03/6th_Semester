@@ -1,0 +1,51 @@
+<!-- Create a web form which allows the teacher to enter the student details like name,
+date of birth, address, contact number, email id and marks of English, Physics and
+Chemistry. After filling all the information and on clicking submit button, details
+should be added to a textarea displayed on the same page. Display the total
+percentage of marks obtained in a label. -->
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Student Details</title>
+
+</head>
+<body>
+	<script type="text/javascript">
+		function
+			myfunc() {
+			var n1 = document.getElementById("eng").value;
+			var n2 = document.getElementById("phy").value;
+			var n3 = document.getElementById("chem").value;
+			var n4 = (parseInt(n1) + parseInt(n2) + parseInt(n3)) / 3;
+
+			var n = document.getElementById("name").value;
+			var d = document.getElementById("dob").value;
+			var a = document.getElementById("address").value;
+			var no = document.getElementById("no").value;
+			var e = document.getElementById("emailid").value;
+
+			var en = document.getElementById("eng").value;
+			var ph = document.getElementById("phy").value;
+			var ch = document.getElementById("chem").value;
+
+			document.getElementById("outputText").value = n + "\n" + d + "\n" + a + "\n" + no + "\n" + e + "\n" + en + "\n" + ph + "\n" + ch + "\n";
+
+			document.getElementById("percentage").innerHTML = "Percentage is " + n4 + "%";
+		}
+	</script>
+	Name: <input type="text" id="name"><br><br>
+	DOB: <input type="text" id="dob"><br><br>
+	Address: <input type="text" id="address"><br><br>
+	Contact Number: <input type="number" id="no"><br><br>
+	Email id: <input type="email" id="emailid"><br><br>
+
+	English: <input type="number" id="eng"><br><br>
+	Physics: <input type="number" id="phy"><br><br>
+	Chemistry: <input type="number" id="chem"><br><br>
+
+	<button onclick="myfunc()">Submit</button><br><br>
+	<textarea id="outputText" name="outputText" rows="8" cols="100"> </textarea>
+	<label id="percentage"></label>
+</body>
+</html>

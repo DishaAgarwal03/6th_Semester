@@ -1,1 +1,4 @@
+create new blank django web project -> check the place in same directory checkbox -> 
+create virtual environment -> change import modules in urls.py accordingly -> add views only if creating in same app 
 
+now follow same procedure for app creation 

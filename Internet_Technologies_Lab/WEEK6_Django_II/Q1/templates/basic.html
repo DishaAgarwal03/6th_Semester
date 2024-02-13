@@ -1,0 +1,38 @@
+<!-- Develop a simple web page to perform basic arithmetic operations. Take two integer inputs from the user, select the operation to be performed using a dropdown. Include a button “Calculate” to perform the selected operation, and then display the result in the same web page. -->
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Simple Calculator</title>
+
+</head>
+<body>
+	<script type="text/javascript">
+		function
+			myfunc() {
+			var n1 = parseInt(document.getElementById("num1").value);
+			var n2 = parseInt(document.getElementById("num2").value);
+			var op = document.getElementById("op").value;
+			if (op == '+') { var res = n1 + n2; }
+			else if (op == '-') { var res = n1 - n2; }
+			else if (op == '*') { var res = n1 * n2; }
+			else { var res = n1 / n2; }
+			document.getElementById("result").innerText = res;
+		}
+	</script>
+
+	First Number: <input type="number" id="num1"><br><br>
+	Second Number: <input type="number" id="num2"><br><br>
+	<label for="op">Operation: </label>
+	<select id="op">
+		<option value="+">+</option>
+		<option value="-">-</option>
+		<option value="*">*</option>
+		<option value="/">/</option>
+	</select>
+
+	<button onclick="myfunc()">Submit</button><br><br>
+	<label id="result"></label>
+
+</body>
+</html>

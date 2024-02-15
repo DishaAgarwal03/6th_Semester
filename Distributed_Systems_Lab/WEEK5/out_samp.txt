@@ -1,0 +1,11 @@
+about	1
+am	2
+are	1
+fine,	1
+good	1
+hi	1
+how	1
+I	2
+too!	1
+what	1
+you?	2

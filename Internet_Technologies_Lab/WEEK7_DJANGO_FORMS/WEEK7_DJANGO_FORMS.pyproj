@@ -1,0 +1,155 @@
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <Name>WEEK7_DJANGO_FORMS</Name>
+    <RootNamespace>WEEK7_DJANGO_FORMS</RootNamespace>
+    <InterpreterId>MSBuild|env|$(MSBuildProjectFullPath)</InterpreterId>
+  </PropertyGroup>
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>7d399571-d520-47ad-a12b-b7749a41b2e8</ProjectGuid>
+    <ProjectHome>.</ProjectHome>
+    <ProjectTypeGuids>{5F0BE9CA-D677-4A4D-8806-6076C0FAAD37};{349c5851-65df-11da-9384-00065b846f21};{888888a0-9f3d-457c-b088-3a5042f75d52}</ProjectTypeGuids>
+    <StartupFile>manage.py</StartupFile>
+    <SearchPath>
+    </SearchPath>
+    <WorkingDirectory>.</WorkingDirectory>
+    <LaunchProvider>Django launcher</LaunchProvider>
+    <DjangoSettingsModule>WEEK7_DJANGO_FORMS.settings</DjangoSettingsModule>
+    <WebBrowserUrl>http://localhost</WebBrowserUrl>
+    <OutputPath>.</OutputPath>
+    <SuppressCollectPythonCloudServiceFiles>true</SuppressCollectPythonCloudServiceFiles>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <DebugSymbols>true</DebugSymbols>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <DebugSymbols>true</DebugSymbols>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="LOGINAPP\admin.py" />
+    <Compile Include="LOGINAPP\apps.py" />
+    <Compile Include="LOGINAPP\forms.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="LOGINAPP\migrations\__init__.py" />
+    <Compile Include="LOGINAPP\models.py" />
+    <Compile Include="LOGINAPP\tests.py" />
+    <Compile Include="LOGINAPP\urls.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="LOGINAPP\views.py" />
+    <Compile Include="LOGINAPP\__init__.py" />
+    <Compile Include="manage.py" />
+    <Compile Include="SAMPLE1\admin.py" />
+    <Compile Include="SAMPLE1\apps.py" />
+    <Compile Include="SAMPLE1\migrations\__init__.py" />
+    <Compile Include="SAMPLE1\models.py" />
+    <Compile Include="SAMPLE1\forms.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SAMPLE1\tests.py" />
+    <Compile Include="SAMPLE1\urls.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SAMPLE1\views.py" />
+    <Compile Include="SAMPLE1\__init__.py" />
+    <Compile Include="SESSAPP\admin.py" />
+    <Compile Include="SESSAPP\apps.py" />
+    <Compile Include="SESSAPP\forms.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SESSAPP\migrations\__init__.py" />
+    <Compile Include="SESSAPP\models.py" />
+    <Compile Include="SESSAPP\tests.py" />
+    <Compile Include="SESSAPP\urls.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SESSAPP\views.py" />
+    <Compile Include="SESSAPP\__init__.py" />
+    <Compile Include="WEEK7_DJANGO_FORMS\__init__.py" />
+    <Compile Include="WEEK7_DJANGO_FORMS\settings.py" />
+    <Compile Include="WEEK7_DJANGO_FORMS\urls.py" />
+    <Compile Include="WEEK7_DJANGO_FORMS\wsgi.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="LOGINAPP\templates\loggedin.html" />
+    <Content Include="LOGINAPP\templates\login.html" />
+    <Content Include="LOGINAPP\templates\LOGINAPP\index.html" />
+    <Content Include="requirements.txt" />
+    <Content Include="SAMPLE1\templates\home.html" />
+    <Content Include="SAMPLE1\templates\SAMPLE1\index.html" />
+    <Content Include="SESSAPP\templates\loggedin.html" />
+    <Content Include="SESSAPP\templates\login.html" />
+    <Content Include="SESSAPP\templates\SESSAPP\index.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="LOGINAPP\" />
+    <Folder Include="LOGINAPP\migrations\" />
+    <Folder Include="LOGINAPP\templates\" />
+    <Folder Include="LOGINAPP\templates\LOGINAPP\" />
+    <Folder Include="SAMPLE1\" />
+    <Folder Include="SAMPLE1\migrations\" />
+    <Folder Include="SAMPLE1\templates\" />
+    <Folder Include="SAMPLE1\templates\SAMPLE1\" />
+    <Folder Include="SESSAPP\" />
+    <Folder Include="SESSAPP\migrations\" />
+    <Folder Include="SESSAPP\templates\" />
+    <Folder Include="SESSAPP\templates\SESSAPP\" />
+    <Folder Include="WEEK7_DJANGO_FORMS\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Interpreter Include="env\">
+      <Id>env</Id>
+      <Version>3.9</Version>
+      <Description>env (Python 3.9 (64-bit))</Description>
+      <InterpreterPath>Scripts\python.exe</InterpreterPath>
+      <WindowsInterpreterPath>Scripts\pythonw.exe</WindowsInterpreterPath>
+      <PathEnvironmentVariable>PYTHONPATH</PathEnvironmentVariable>
+      <Architecture>X64</Architecture>
+    </Interpreter>
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.Django.targets" />
+  <!-- Specify pre- and post-build commands in the BeforeBuild and 
+       AfterBuild targets below. -->
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <AutoAssignPort>True</AutoAssignPort>
+          <UseCustomServer>True</UseCustomServer>
+          <CustomServerUrl>http://localhost</CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}" User="">
+        <WebProjectProperties>
+          <StartPageUrl>
+          </StartPageUrl>
+          <StartAction>CurrentPage</StartAction>
+          <AspNetDebugging>True</AspNetDebugging>
+          <SilverlightDebugging>False</SilverlightDebugging>
+          <NativeDebugging>False</NativeDebugging>
+          <SQLDebugging>False</SQLDebugging>
+          <ExternalProgram>
+          </ExternalProgram>
+          <StartExternalURL>
+          </StartExternalURL>
+          <StartCmdLineArguments>
+          </StartCmdLineArguments>
+          <StartWorkingDirectory>
+          </StartWorkingDirectory>
+          <EnableENC>False</EnableENC>
+          <AlwaysStartWebServerOnDebug>False</AlwaysStartWebServerOnDebug>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>

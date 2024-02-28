@@ -8,3 +8,5 @@ http://condor.cc.ku.edu/~grobe/docs/intro-MPI-C.shtml
 
 Week4:
 https://www.mcs.anl.gov/research/projects/mpi/tutorial/mpiexmpl/src/pi/C/main.html
+
+CUDA: nvcc -o q q.cu

@@ -15,3 +15,9 @@ add Qn app in project -> add basic.html to templates and update accordingly -> a
 now in the main project app, 
 settings.py: add Qn to installed apps and 'DIRS': [os.path.join(BASE_DIR, 'Qn/templates')],
 urls.py: add the pattern
+
+
+
+IF SESSION PART IS NOT WORKING -> USE THE MAKEMIGRATE COMMND THEN RUN MANAGE.PY -> WRITE FULL STEPS
+IF A PROJECT IS ALREADY RUNNING, CANNOT ADD FILES OTHER THAN HTML FILES -> SO TERMINATE THE PROJECT THEN ADD
+CREATE FORM -> VIEWS -> URLS -> HTML FILES

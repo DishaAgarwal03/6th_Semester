@@ -1,18 +1,20 @@
-// NOT WORKING
+#include "cuda_runtime.h"
+#include "device_launch_parameters.h"
 
-#include <iostream>
-#include <string>
-#include <cuda_runtime.h>
+#include<stdio.h>
+#include<stdlib.h>
+#include<string.h>
 
-__global__ void countOccurrences(char* str, char* word, int* result, int length) {
+#define N 1024
+
+__global__ void countOccurrences(char* str, char* w, int* result, int length, int wn) {
     int tid = blockIdx.x * blockDim.x + threadIdx.x;
-    int wordLength = strlen(word);
 
     if (tid < length) {
-        if (tid + wordLength <= length) {
+        if (tid + wn <= length) {
             bool match = true;
-            for (int i = 0; i < wordLength; i++) {
-                if (str[tid + i] != word[i]) {
+            for (int i = 0; i < wn; i++) {
+                if (str[tid + i] != w[i]) {
                     match = false;
                     break;
                 }
@@ -26,36 +28,42 @@ __global__ void countOccurrences(char* str, char* word, int* result, int length)
 }
 
 int main() {
-    std::string text = "Hello world, hello world!";
-    std::string word = "world";
-    int textLength = text.size();
-    int wordLength = word.size();
+    char a[N];
+    char w[N];
 
-    char* d_text;
-    char* d_word;
-    int* d_result;
+    printf("Enter a string: ");
+    scanf("%[^\n]s", a);
+    printf("Enter a word: ");
+    scanf("%s", w);
 
-    cudaMalloc((void**)&d_text, textLength * sizeof(char));
-    cudaMalloc((void**)&d_word, wordLength * sizeof(char));
-    cudaMalloc((void**)&d_result, sizeof(int));
+    int an = strlen(a);
+    int wn = strlen(w);
 
-    cudaMemcpy(d_text, text.c_str(), textLength * sizeof(char), cudaMemcpyHostToDevice);
-    cudaMemcpy(d_word, word.c_str(), wordLength * sizeof(char), cudaMemcpyHostToDevice);
-    cudaMemset(d_result, 0, sizeof(int));
+    char* da;
+    char* dw;
+    int* dres;
+
+    cudaMalloc((void**)&da, an * sizeof(char));
+    cudaMalloc((void**)&dw, wn * sizeof(char));
+    cudaMalloc((void**)&dres, sizeof(int));
+
+    cudaMemcpy(da, a, an * sizeof(char), cudaMemcpyHostToDevice);
+    cudaMemcpy(dw, w, wn * sizeof(char), cudaMemcpyHostToDevice);
+    cudaMemset(dres, 0, sizeof(int));
 
     int block_size = 32;
-    int num_blocks = (textLength + block_size - 1) / block_size;
+    int num_blocks = (an + block_size - 1) / block_size;
 
-    countOccurrences<<<num_blocks, block_size>>>(d_text, d_word, d_result, textLength);
+    countOccurrences<<<num_blocks, block_size>>>(da, dw, dres, an, wn);
 
     int result;
-    cudaMemcpy(&result, d_result, sizeof(int), cudaMemcpyDeviceToHost);
+    cudaMemcpy(&result, dres, sizeof(int), cudaMemcpyDeviceToHost);
 
-    std::cout << "Occurrences of the word \"" << word << "\": " << result << std::endl;
+    printf("Occurrences of the '%s' is %d\n",w,result);
 
-    cudaFree(d_text);
-    cudaFree(d_word);
-    cudaFree(d_result);
+    cudaFree(da);
+    cudaFree(dw);
+    cudaFree(dres);
 
     return 0;
 }

@@ -9,3 +9,6 @@ class SubForm(forms.Form):
     name = forms.CharField()
     roll = forms.CharField()
     subject = forms.ChoiceField(widget=forms.Select,choices=subs)
+    
+#class DisplayForm(forms.Form):
+#    label_text = forms.CharField(max_length=100, label='Label Text')

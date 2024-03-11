@@ -3,3 +3,6 @@ create virtual environment -> change import modules in urls.py accordingly ->
 add views only if creating in same app and exclude from . import views if not working in the same app 
 
 now follow same procedure for app creation 
+
+
+COMPLETE Q2,Q3 -> IN L6

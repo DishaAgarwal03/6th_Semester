@@ -1,0 +1,25 @@
+<!--<html>
+<body>
+    <form action="{% url 'first_page' %}" method="POST">
+        {% csrf_token %}
+        form.as_p }}
+        <input type="submit" value="Go Back">
+    </form>
+</body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+<body>
+    <h1>Second Page</h1>
+    <form method="post">
+        {% csrf_token %}
+        <label>
+            Name: <b>{{name}}</b><br /><br />
+            Roll number: <b>{{roll}}</b><br /><br />
+            Subject: <b>{{subject}}</b><br /><br />
+        </label>
+        <button type="submit">Go Back</button>
+    </form>
+</body>
+</html>

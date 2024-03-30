@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Dashboard</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+    <style>
+        body {
+            font-family: 'Garamond', serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            background-color:#E8E8E8;
+            color:#64444D;
+        }
+
+        .dashboard {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 22px;
+            max-width: 1300px;
+            margin: 25px;
+            padding: 25px;
+            background-color: #7994B7;
+            border-radius: 12px;
+            box-shadow: 0 2px 4px black;
+        }
+
+        .column {
+            padding: 10px; 
+            border-radius: 5px;
+        }
+
+        h1 {
+            color: #64444D; 
+            font-family: 'Garamond', serif;
+            font-size: 45px; 
+        }
+        h2 {
+            color: #7994B7; 
+            font-family:  'Garamond', serif;
+            font-size: 30px; 
+        }
+        .card { 
+            margin-bottom: 15px;
+        }
+
+        ul {
+            list-style-type: disc;
+            margin-left: 20px;
+        }
+
+        button[type="submit"] {
+            background-color:#64444D;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            position: absolute;
+            top: 35px;
+            right: 40px;
+        }
+        .column.card { 
+            margin-bottom: 15px;
+            transition: transform 0.2s ease; 
+        }
+
+        .column.card:hover {
+            transform: scale(1.05);  
+        }
+        h2 i {
+             color: #7994B7;
+        }
+        .container {
+         position: relative; 
+        }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th, td {
+            border: 1px solid #dddddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            border-spacing: 0;
+            font-size: 0.9em;
+            border: 1px solid #dddddd;
+            overflow: hidden;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+            border-radius: 10px;
+        }
+
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #dddddd;
+            border-right: 1px solid #dddddd;
+        }
+
+        th:first-child, td:first-child {
+            border-left: 1px solid #dddddd;
+        }
+
+        th:last-child, td:last-child {
+            border-right: none;
+        }
+
+        thead th {
+            background-color: #f8f9fa;
+            color: #777777;
+            text-transform: uppercase;
+        }
+
+        tbody tr:nth-child(even) {
+            background-color: #f3f3f3;
+        }
+
+        tbody tr:hover {
+            background-color: #ececec;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">  
+        <br>
+        <h1>{{ welcome_message }}</h1>
+        <h3>Hello, {{ user.username }}!</h3>
+        <form action="{% url 'logout' %}" method="post">
+            {% csrf_token %}
+            <button type="submit">Logout</button>
+        </form>
+        <br><br><br>
+        <div class="dashboard">
+            <div class="column card bg-light"> 
+                <h2><i class="bi bi-sticky"></i>  Notes/Resources</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Title</th>
+                            <th>Link</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for resource in resources %}
+                            <tr>
+                                <td>{{ resource.title }}</td>
+                                <td><a href="{{ resource.link }}">{{ resource.link }}</a></td>
+                            </tr>
+                        {% empty %}
+                            <tr>
+                                <td colspan="2">No resources available.</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="column card bg-light"> 
+                <h2><i class="bi bi-award"></i>  Marks</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Assignment Title</th>
+                            <th>Score</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for mark in marks %}
+                            <tr>
+                                <td>{{ mark.assignment_title }}</td>
+                                <td>{{ mark.score }}</td>
+                            </tr>
+                        {% empty %}
+                            <tr>
+                                <td colspan="2">No marks available.</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="column card bg-light"> 
+                <h2><i class="bi bi-megaphone"></i>  Announcements</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Time</th>
+                            <th>Message</th>
+                            <th>Type</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for announcement in announcements %}
+                            <tr>
+                                <td>{{ announcement.created_at|date:"D, d M Y H:i" }}</td>
+                                <td>{{ announcement.message }}</td>
+                                <td>{% if announcement.for_all %}
+                                        Broadcast
+                                    {% else %}
+                                        Private
+                                    {% endif %}
+                                </td>
+                            </tr>
+                        {% empty %}
+                            <tr>
+                                <td colspan="3">No announcements.</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <script>
+        const cards = document.querySelectorAll('.column.card');
+      
+        cards.forEach(card => {
+          card.addEventListener('mouseenter', () => {
+            card.style.transform = 'scale(1.05)'; 
+          });
+      
+          card.addEventListener('mouseleave', () => {
+            card.style.transform = 'scale(1)';  
+          });
+        });
+      </script>
+</body>
+</html>
